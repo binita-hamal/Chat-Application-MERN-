@@ -1,13 +1,33 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { postRegister } from "../services/auth.service";
 
 export default function SignupCard() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+
+    const userObject = {
+      name:fullName,
+      email,
+      password
+    }
+
+    try {
+      const result = await postRegister(userObject)
+      alert(result.message)
+      setFullName("")
+      setEmail("")
+      setPassword("")
+
+    } catch (error) {
+      console.log(error)
+    }
+
+
   };
 
   return (
@@ -29,6 +49,7 @@ export default function SignupCard() {
             <input
               type="text"
               name="name"
+              autoComplete="name"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="Enter your name"
@@ -44,6 +65,7 @@ export default function SignupCard() {
             <input
               type="email"
               name="email"
+              autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
@@ -60,6 +82,7 @@ export default function SignupCard() {
               type="password"
               name="password"
               value={password}
+              autoComplete="new-password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               className="border p-3.5 rounded-xl bg-gray-50 outline-none focus:ring-4 focus:ring-green-200 focus:border-green-500 transition"
