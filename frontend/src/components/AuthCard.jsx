@@ -10,10 +10,8 @@ export default function AuthCard({
 }) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 via-white to-emerald-100 px-4">
-      
       {/* Card */}
       <div className="w-[400px] bg-white/90 backdrop-blur-md border border-gray-200 shadow-2xl rounded-3xl p-8 transition-all duration-300 hover:shadow-green-200 hover:scale-[1.01]">
-        
         {/* Title */}
         <h2 className="text-4xl font-bold text-center text-green-800 mb-8 tracking-tight">
           {title}
@@ -21,11 +19,9 @@ export default function AuthCard({
 
         {/* Form */}
         <form className="flex flex-col gap-5">
-          
           {/* Dynamic Fields */}
           {fields.map((field, index) => (
             <div key={index} className="flex flex-col gap-2">
-              
               {/* Label */}
               <label className="text-sm font-semibold text-gray-700">
                 {field.label}
@@ -77,7 +73,6 @@ export default function AuthCard({
         {/* Footer */}
         <p className="text-center text-gray-600 mt-8 text-sm">
           {footerText}{" "}
-          
           <Link
             to={footerLink}
             className="
