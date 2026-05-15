@@ -1,12 +1,37 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { postLogin } from "../services/auth.service";
 
 export default function LoginCard() {
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const createObj = {
+      email,
+      password,
+    };
+
+    try {
+      const result = await postLogin(createObj);
+
+      //store the token in the localStorage
+      localStorage.setItem("token",result.token)
+      alert(result.message);
+
+      setEmail("");
+      setPassword("");
+
+      //navigate to Dashboard
+      navigate('/dashboard')
+
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -22,13 +47,14 @@ export default function LoginCard() {
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           {/* Email */}
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-gray-700">Name</label>
+            <label className="text-sm font-semibold text-gray-700">Email</label>
             <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
+              type="email"
+              name="email"
+              value={email}
+              autoComplete="email"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
               className="border p-3.5 rounded-xl bg-gray-50 outline-none focus:ring-4 focus:ring-green-200 focus:border-green-500 transition"
             />
           </div>
@@ -42,6 +68,7 @@ export default function LoginCard() {
               type="password"
               name="password"
               value={password}
+              autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               className="border p-3.5 rounded-xl bg-gray-50 outline-none focus:ring-4 focus:ring-green-200 focus:border-green-500 transition"
