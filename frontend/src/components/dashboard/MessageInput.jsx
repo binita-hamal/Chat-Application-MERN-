@@ -7,10 +7,10 @@ export default function MessageInput() {
   const handleSend = () => {
     if (!text.trim()) return;
 
-    // The server saves it and broadcasts back to everyone including you.
+    // The server saves it and broadcasts back to everyone
     socket.emit("send_message", { text: text.trim() });
 
-    setText(""); // clear input
+    setText("");
   };
 
   const handleKeyDown = (e) => {

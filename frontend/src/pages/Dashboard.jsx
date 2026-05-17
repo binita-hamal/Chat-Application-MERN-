@@ -55,7 +55,7 @@ function Dashboard() {
       ]);
     });
 
-    // Cleanup: remove listeners + disconnect when leaving dashboard
+    // Cleanup function,remove listeners + disconnect when leaving dashboard
     return () => {
       socket.off("chat_history");
       socket.off("new_message");

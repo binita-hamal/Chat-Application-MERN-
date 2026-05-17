@@ -106,7 +106,7 @@ export const initSocket = (io) => {
       })
 
       // Update online count for everyone
-      // Small timeout: socket leaves room after disconnect event
+      // Small timeout,socket leaves room after disconnect event
       setTimeout(async () => {
         io.to("global").emit("stats_update", await getStats(io))
       }, 100)
