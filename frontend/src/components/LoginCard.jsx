@@ -20,6 +20,8 @@ export default function LoginCard() {
 
       //store the token in the localStorage
       localStorage.setItem("token",result.token)
+      localStorage.setItem("user", JSON.stringify(result.user))
+
       alert(result.message);
 
       setEmail("");

@@ -8,9 +8,10 @@ function Hero() {
         </h2>
 
         <p className="text-lg text-gray-600 max-w-2xl mb-8">
-          Build modern web experiences with a clean and responsive landing page.
-          This template includes a simple navbar, hero section, and action
-          buttons to get started quickly.
+          Connect with your teams in real-time using our modern group chat
+          platform. Create groups, share messages instantly, and collaborate
+          seamlessly with a clean WhatsApp-inspired interface built using the
+          MERN stack and Socket.io.
         </p>
 
         <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-lg transition">

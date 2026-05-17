@@ -2,7 +2,6 @@ import { MessageCircle, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -12,18 +11,10 @@ export default function Sidebar() {
 
   return (
     <div className="w-20 bg-green-700 text-white flex flex-col items-center py-6 justify-between">
-      
-      {/* TOP ICONS */}
       <div className="flex flex-col gap-8 items-center">
-
         <button className="hover:bg-green-600 p-3 rounded-xl transition">
           <MessageCircle size={26} />
         </button>
-
-        {/* <button className="hover:bg-green-600 p-3 rounded-xl transition">
-          <Plus size={26} />
-        </button> */}
-
       </div>
 
       {/* LOGOUT */}
@@ -33,7 +24,6 @@ export default function Sidebar() {
       >
         <LogOut size={24} />
       </button>
-
     </div>
   );
 }
