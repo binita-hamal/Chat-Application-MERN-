@@ -14,6 +14,10 @@ const messageSchema = mongoose.Schema({
     text:{
         type:String,
         required:true
+    },
+    room:{
+        type:String,
+        default:"global"
     }
 },
 {
